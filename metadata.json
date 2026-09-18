@@ -1,0 +1,6 @@
+{
+  "name": "동글동글 갤러리",
+  "description": "학생이 업로드한 사진의 배경을 제거하여 푸른 초원에 배치하고 Firebase를 통해 교사 화면에 실시간으로 모아 보여주는 웹 앱",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

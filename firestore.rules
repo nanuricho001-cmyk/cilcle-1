@@ -1,0 +1,14 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /meadow_photos/{photoId} {
+      // Students can upload photos and delete or update their own
+      allow read, write: if true;
+
+      // Allow storing large high-resolution photos in chunks
+      match /photo_chunks/{chunkId} {
+        allow read, write: if true;
+      }
+    }
+  }
+}

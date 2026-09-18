@@ -1,0 +1,63 @@
+{
+  "entities": {
+    "MeadowPhoto": {
+      "title": "MeadowPhoto",
+      "description": "Student photo with background removed for meadow display",
+      "type": "object",
+      "properties": {
+        "studentName": {
+          "type": "string",
+          "description": "Name of the student",
+          "maxLength": 50
+        },
+        "message": {
+          "type": "string",
+          "description": "Optional greeting or message",
+          "maxLength": 200
+        },
+        "photoDataUrl": {
+          "type": "string",
+          "description": "Optimized background-removed image data URL"
+        },
+        "createdAt": {
+          "type": "number",
+          "description": "Timestamp when uploaded"
+        },
+        "positionX": {
+          "type": "number",
+          "description": "Percentage X position on meadow"
+        },
+        "positionY": {
+          "type": "number",
+          "description": "Percentage Y position on meadow"
+        },
+        "scale": {
+          "type": "number",
+          "description": "Display scale factor"
+        },
+        "rotation": {
+          "type": "number",
+          "description": "Tilt angle in degrees"
+        },
+        "isChunked": {
+          "type": "boolean",
+          "description": "Whether image data exceeds 800KB and is stored across subcollection chunks"
+        },
+        "totalChunks": {
+          "type": "number",
+          "description": "Total chunk count if image is stored in chunks"
+        }
+      },
+      "required": ["studentName", "photoDataUrl", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/meadow_photos/{photoId}": {
+      "schema": "MeadowPhoto",
+      "description": "Collection of student photos placed on the class meadow"
+    },
+    "/meadow_photos/{photoId}/photo_chunks/{chunkId}": {
+      "description": "Subcollection chunks storing high-resolution cutouts exceeding Firestore 1MB document limit"
+    }
+  }
+}
